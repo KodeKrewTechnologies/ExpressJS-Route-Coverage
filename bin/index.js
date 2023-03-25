@@ -4,7 +4,9 @@ const boxen = require("boxen");
 const yargs = require("yargs");
 const figlet = require("figlet");
 const path = require("path");
+const fs = require("fs");
 const registeredRoutes = require("../plugin");
+const { exit } = require("process");
 
 const usage = chalk.keyword("violet")(
   "\nUsage: erc -p <path>  -v <variable> -o <output> -f <output-file> \n" +
@@ -56,8 +58,13 @@ if (argv.path == null && argv.p == null) {
   yargs.showHelp();
   return;
 }
+
 if (argv.v == null && argv.variable == null) {
-  argv.v = "app";
+  console.log(
+    chalk.yellow(figlet.textSync("ERC", { horizontalLayout: "full" }))
+  );
+  yargs.showHelp();
+  return;
 }
 
 let _path = argv.p || argv.path;
@@ -65,16 +72,36 @@ let _variable = argv.v || argv.variable;
 let _output = argv.o || argv.output;
 let _outputFile = argv.f || argv.outputFile;
 
+setTimeout(() => exit(0), 100);
 main();
 
 async function main() {
   _path = path.resolve(_path);
-  const imports = require(_path);
-  if (Object.keys(imports).filter((key) => key === _variable).length === 0) {
-    console.log(chalk.red("Variable name not found in the file"));
+  let app = null;
+  const data = fs.readFileSync(_path, "utf8");
+  if (data.includes("module.exports")) {
+    const imports = require(_path);
+    if (Object.keys(imports).filter((key) => key === _variable).length === 1) {
+      app = imports[_variable];
+    } else {
+      console.log(chalk.red("Not exporting ExpressJS App variable properly."));
+      return;
+    }
+  } else {
+    const update = `${data}\nmodule.exports = {${_variable}: ${_variable}};`;
+    const tempFileName = `${_path.substring(
+      0,
+      _path.lastIndexOf("/")
+    )}/.temp.${Math.floor(Math.random() * 1000000)}.js`;
+    const tempFile = fs.writeFileSync(tempFileName, update);
+    const imports = require(path.resolve(tempFileName));
+    app = imports[_variable];
+    await fs.unlinkSync(tempFileName);
+  }
+  if (app == null) {
+    console.log(chalk.red("Unable to link with Express App properly."));
     return;
   }
-  const app = imports[_variable];
   const routes = registeredRoutes(app);
   if (_output) {
     switch (_output) {
