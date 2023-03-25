@@ -1,6 +1,7 @@
 # ExpressJS-Route-Coverage
     An express JS plugin to print registered routes of an expressJS app.
-    This project is inspired by the following Stack Overflow answer: https://stackoverflow.com/a/46397967/6072570
+    
+This project is inspired by the following [Stack Overflow Answer](https://stackoverflow.com/a/46397967/6072570).
 
 
 ## Installation
