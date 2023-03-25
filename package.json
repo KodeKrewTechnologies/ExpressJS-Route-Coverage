@@ -1,0 +1,33 @@
+{
+  "name": "expressjs-route-coverage",
+  "version": "1.0.0",
+  "description": "An express JS plugin to print registered routes of an expressJS app.",
+  "main": "index.js",
+  "bin": {
+    "erc": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kodekrewOrg/ExpressJS-Route-Coverage.git"
+  },
+  "keywords": [
+    "ExpressJS",
+    "Plugin",
+    "CodeCoverage"
+  ],
+  "author": "KodeKrew Technologies (Trishant Pahwa)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kodekrewOrg/ExpressJS-Route-Coverage/issues"
+  },
+  "homepage": "https://github.com/kodekrewOrg/ExpressJS-Route-Coverage#readme",
+  "dependencies": {
+    "boxen": "^5.1.2",
+    "chalk": "^4.1.2",
+    "figlet": "^1.5.2",
+    "yargs": "^17.7.1"
+  }
+}
