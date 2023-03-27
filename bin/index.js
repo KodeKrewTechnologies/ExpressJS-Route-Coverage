@@ -77,7 +77,7 @@ main();
 
 async function main() {
   _path = path.resolve(_path);
-  if (!fs.existsSync(path)) {
+  if (!fs.existsSync(_path)) {
     console.log(
       chalk.yellow(figlet.textSync("ERC", { horizontalLayout: "full" }))
     );
