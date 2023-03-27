@@ -1,6 +1,6 @@
 {
   "name": "expressjs-route-coverage",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An express JS plugin to print registered routes of an expressJS app.",
   "main": "index.js",
   "bin": {

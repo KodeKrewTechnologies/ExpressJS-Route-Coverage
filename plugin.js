@@ -38,7 +38,7 @@ function split(thing) {
 
 function registeredRoutes(app) {
   app._router.stack.forEach(print.bind(null, []));
-  return routes;
+  return Array.from(new Set(routes));
 }
 
 module.exports = registeredRoutes;
