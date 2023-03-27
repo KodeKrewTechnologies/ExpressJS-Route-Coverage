@@ -77,6 +77,14 @@ main();
 
 async function main() {
   _path = path.resolve(_path);
+  if (!fs.existsSync(path)) {
+    console.log(
+      chalk.yellow(figlet.textSync("ERC", { horizontalLayout: "full" }))
+    );
+    yargs.showHelp();
+    console.log(`\n\n${chalk.red("File not found")}\n${_path}\n`);
+    return;
+  }
   let app = null;
   const data = fs.readFileSync(_path, "utf8");
   if (data.includes("module.exports")) {
