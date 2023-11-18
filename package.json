@@ -7,7 +7,7 @@
     "erc": "./bin/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,11 @@
   "dependencies": {
     "boxen": "^5.1.2",
     "chalk": "^4.1.2",
-    "figlet": "^1.5.2",
-    "yargs": "^17.7.1"
+    "figlet": "^1.7.0",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "express": "^4.18.2",
+    "mocha": "^10.2.0"
   }
 }
