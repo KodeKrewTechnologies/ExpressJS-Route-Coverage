@@ -125,24 +125,25 @@ async function main() {
         routes.map((route) => {
           const _route = route.split(" ");
           const method = _route[0];
+          const description = _route.length > 4 ? _route[2] + " " + _route[3] : false;
           const __path = _route[1];
           if (method === "GET") {
             console.log(
               `${chalk.bgGrey(chalk.greenBright(method))}\t${chalk.whiteBright(
                 __path
-              )}`
+              )}${description ? " " + chalk.cyanBright(description) : ""}`
             );
           } else if (method === "POST") {
             console.log(
               `${chalk.bgGrey(chalk.blueBright(method))}\t${chalk.whiteBright(
                 __path
-              )}`
+              )}${description ? " " + chalk.cyanBright(description) : ""}`
             );
           } else if (method === "PUT") {
             console.log(
               `${chalk.bgGrey(chalk.yellowBright(method))}\t${chalk.whiteBright(
                 __path
-              )}`
+              )}${description ? " " + chalk.cyanBright(description) : ""}`
             );
           } else if (method === "PATCH") {
             console.log(
@@ -154,13 +155,13 @@ async function main() {
             console.log(
               `${chalk.bgGrey(chalk.redBright(method))}\t${chalk.whiteBright(
                 __path
-              )}`
+              )}${description ? " " + chalk.cyanBright(description) : ""}`
             );
           } else {
             console.log(
               `${chalk.bgGrey(chalk.grayBright(method))}\t${chalk.whiteBright(
                 __path
-              )}`
+              )}${description ? " " + chalk.cyanBright(description) : ""}`
             );
           }
         });
