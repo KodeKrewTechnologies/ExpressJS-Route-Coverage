@@ -3,6 +3,8 @@
     
 This project is inspired by the following [Stack Overflow Answer](https://stackoverflow.com/a/46397967/6072570).
 
+> Only supports `express: ^4.18.2`.
+
 ![Made with love in India](https://madewithlove.now.sh/in?heart=true&template=for-the-badge) `&& ` ![javascript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
 ![npm](https://img.shields.io/npm/dw/expressjs-route-coverage?style=for-the-badge)
